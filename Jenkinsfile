@@ -1,50 +1,24 @@
 pipeline {
-    agent any
-
-    environment {
-        REPO_URL = 'https://github.com/ashishsoni1717/javaGradle.git'
-    }
+    agent any 
 
     stages {
-        stage('Checkout') {
+        stage("Build Java Developer") {
             steps {
-                // Checkout code from GitHub
-                git branch: 'master', url: env.REPO_URL
+                echo "Hello Build Working Java Developer" 
             }
         }
 
-        stage('Build') {
+        stage("Test Java Developer") {
             steps {
-                // Build project using Gradle
-                sh './gradlew clean build'
+                echo "Testing Working Java Developer"
             }
         }
 
-        stage('Test') {
+      stage("Deploy Java Developer") {
             steps {
-                // Run tests
-                sh './gradlew test'
-            }
-        }
-
-        stage('Archive') {
-            steps {
-                // Archive build artifacts
-                archiveArtifacts artifacts: '**/build/libs/*.jar', fingerprint: true
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy steps here (e.g., copy files, run scripts)'
+                echo "Deploy Working Java Developer"
             }
         }
     }
-
-    post {
-        always {
-            // Clean up workspace
-            cleanWs()
-        }
-    }
+    
 }
