@@ -1,24 +1,50 @@
 pipeline {
-    agent any 
+    agent any
+
+    environment {
+        REPO_URL = 'https://github.com/your-org/your-repo.git'
+    }
 
     stages {
-        stage("Build Java Developer") {
+        stage('Checkout') {
             steps {
-                echo "Hello Build Working Java Developer" 
+                // Checkout code from GitHub
+                git branch: 'main', url: env.REPO_URL
             }
         }
 
-        stage("Test Java Developer") {
+        stage('Build') {
             steps {
-                echo "Testing Working Java Developer"
+                // Build project using Gradle
+                sh './gradlew clean build'
             }
         }
 
-      stage("Deploy Java Developer") {
+        stage('Test') {
             steps {
-                echo "Deploy Working Java Developer"
+                // Run tests
+                sh './gradlew test'
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                // Archive build artifacts
+                archiveArtifacts artifacts: '**/build/libs/*.jar', fingerprint: true
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploy steps here (e.g., copy files, run scripts)'
             }
         }
     }
-    
+
+    post {
+        always {
+            // Clean up workspace
+            cleanWs()
+        }
+    }
 }
