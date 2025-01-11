@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Build Java Release") {
             steps {
-                echo "Hello Build Working Java Release" 
+                echo "Hello Build Working Java Release ch" 
             }
         }
 
