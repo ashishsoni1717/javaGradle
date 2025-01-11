@@ -2,21 +2,21 @@ pipeline {
     agent any 
 
     stages {
-        stage("Build Java Developer") {
+        stage("Build Java Test") {
             steps {
-                echo "Hello Build Working Java Developer" 
+                echo "Hello Build Working Java Test" 
             }
         }
 
-        stage("Test Java Developer") {
+        stage("Test Java Test") {
             steps {
-                echo "Testing Working Java Developer"
+                echo "Testing Working Java Test"
             }
         }
 
-      stage("Deploy Java Developer") {
+      stage("Deploy Java Test") {
             steps {
-                echo "Deploy Working Java Developer"
+                echo "Deploy Working Java Test"
             }
         }
     }
