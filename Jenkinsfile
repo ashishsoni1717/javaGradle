@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from GitHub
-                git branch: 'main', url: env.REPO_URL
+                git branch: 'master', url: env.REPO_URL
             }
         }
 
