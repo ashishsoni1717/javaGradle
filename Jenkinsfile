@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        REPO_URL = 'https://github.com/your-org/your-repo.git'
+        REPO_URL = 'https://github.com/ashishsoni1717/javaGradle.git'
     }
 
     stages {
